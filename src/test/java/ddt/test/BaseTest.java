@@ -1,13 +1,16 @@
 package ddt.test;
 
 import core.DetailWebDriverEventListener;
+import io.qameta.allure.Attachment;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.core.har.HarEntry;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Proxy;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,6 +29,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+
+@Listeners(TestListener.class)
 public class BaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
     private static Logger LOG_TRAFFIC = LoggerFactory.getLogger("TRAFFIC");
@@ -83,6 +88,11 @@ public class BaseTest {
             LOG.info("Close browser.");
             driver.quit();
         }
+    }
+
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshotPNG () {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 
     @BeforeMethod

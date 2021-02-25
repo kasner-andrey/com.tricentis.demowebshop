@@ -2,6 +2,7 @@ package ddt.page;
 
 
 import core.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,10 +37,12 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("inputEmail")
     public LoginPage inputEmail(String email) {
         inputField(emailField, email);
         return this;
     }
+    @Step("inputPassword")
     public LoginPage inputPassword(String password) {
         inputField(passwordField, password);
         return this;
@@ -48,10 +51,12 @@ public class LoginPage extends BasePage {
         rememberOnButton.click();
         return this;
     }
+    @Step("succesLogInButtonClick")
     public HomeRegisterPage succesLogInButtonClick(){
         logInButton.click();
         return new HomeRegisterPage(driver);
     }
+    @Step("failLogInButtonClick")
     public LoginPage failLogInButtonClick(){
         logInButton.click();
         return this;

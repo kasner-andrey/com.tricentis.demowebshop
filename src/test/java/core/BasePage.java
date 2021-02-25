@@ -1,6 +1,7 @@
 package core;
 
 import ddt.page.*;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -202,6 +203,7 @@ public class BasePage {
 
 
 
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this); // необходимо, чтобы проинициализировать аннотированные поля
@@ -214,6 +216,7 @@ public class BasePage {
         return baseUrl;
     }
 
+    @Step("enter {0} {1}")
     public void inputField(WebElement textField, String value) {
         textField.click();
         textField.clear();

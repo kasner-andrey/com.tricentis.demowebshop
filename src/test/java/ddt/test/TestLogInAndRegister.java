@@ -57,7 +57,7 @@ public class TestLogInAndRegister extends BaseTest{
         }
         return cases.toArray(Object[][]::new);
     }
-    @Test(dataProvider = "loginSuccess")
+    @Test(dataProvider = "loginSuccess",  description = "severity level")
     public void testLogIn(String email, String password) {
         HomeRegisterPage homeRegisterPage = new HomePage(driver, baseUrl)
                 .goToHome()
