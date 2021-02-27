@@ -95,6 +95,11 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.6</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>2.13.1</version>
+        </dependency>
 
     </dependencies>
 <!--Profile from maven Для запуска разных наборов тестов-->
